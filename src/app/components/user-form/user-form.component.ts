@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-form',
@@ -8,11 +9,41 @@ import { FormBuilder } from '@angular/forms'
 })
 export class UserFormComponent implements OnInit {
 
-  constructor(private form: FormBuilder) { }
+  public userForm;
+  public message: boolean = false;
+  public states;
+
+  constructor(private form: FormBuilder, private us: UserService) {
+    this.states = this.us.getStates();
+    this.createForm();
+  }
 
   ngOnInit() {
   }
 
-  create
+  createForm() {
+    this.userForm = this.form.group({
+      id: "",
+      firstname: ["", Validators.required],
+      lastname: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      phone: ["", Validators.required],
+      age_group: "0",
+      state: "",
+      zip: "",
+      newsletter: false
+    });
+  }
+
+  submitForm(){
+    this.message = false;
+    if (this.userForm.valid){
+      this.us.createUser(this.userForm.value).subscribe(response =>{
+        if (response["message"]=="success"){
+            this.message = true
+        }
+      });
+    }
+  }
 
 }

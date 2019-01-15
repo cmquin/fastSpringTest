@@ -1,3 +1,115 @@
-<p>
-  admin-list works!
-</p>
+<div class="table-container">
+  <h1>
+    Admin User List
+  </h1>
+  <table>
+    <thead>
+      <tr>
+        <td>
+          ID
+        </td>
+        <td>
+          First Name
+        </td>
+        <td>
+          Last Name
+        </td>
+        <td>
+          Email
+        </td>
+        <td>
+          Phone
+        </td>
+        <td>
+          Edit
+        </td>
+        <td>
+          Delete
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList">
+        <td>{{user["id"]}}</td>
+        <td>{{user["firstname"]}}</td>
+        <td>{{user["lastname"]}}</td>
+        <td>{{user["email"]}}</td>
+        <td>{{user["phone"]}}</td>
+        <td><a (click)="editUser(user)">edit</a></td>
+        <td><a (click)="deleteUser(user['id'])">delete</a></td>
+      </tr>
+    <tbody>
+  </table>
+</div>
+
+<modal [(visible)]="editModal">
+  <div class="modal-header">
+    <h3>Edit User Information</h3>
+  </div>
+  <div>
+    <form [formGroup]="userForm">
+      <div class="red-text required">*Required</div>
+
+      <label>First Name <span class="red-text">*</span>
+        <show-errors [control]="userForm.controls.firstname"></show-errors>
+        <input type="text" placeholder="ex: Corey" formControlName="firstname" />
+      </label>
+
+      <label>Last Name <span class="red-text">*</span>
+        <show-errors [control]="userForm.controls.lastname"></show-errors>
+        <input type="text" placeholder="ex: Quin" formControlName="lastname" />
+      </label>
+
+      <label>Email <span class="red-text">*</span>
+        <show-errors [control]="userForm.controls.email"></show-errors>
+        <input type="email" placeholder="sample@domain.com" formControlName="email" />
+      </label>
+
+      <label>Phone <span class="red-text">*</span>
+        <show-errors [control]="userForm.controls.phone"></show-errors>
+        <input type="text" placeholder="(805) 555-5555" formControlName="phone" />
+      </label>
+
+      <div>
+        <label>State</label>
+        <select formControlName="state">
+          <option value="">Select a State</option>
+          <option *ngFor="let state of states" [value]="state['abbreviation']">{{state['name']}}</option>
+        </select>
+
+        <label>Zip
+          <input class="zip-width" placeholder="" type="text" formControlName="zip">
+        </label>
+      </div>
+
+      <div class="age-container">
+        <span class="age-group-title">Select an age group</span><br>
+        <label>
+          <input type="radio" value="1-17" name="age_group" formControlName="age_group"/>
+          1 - 17
+        </label><br>
+        <label>
+          <input type="radio" value="18-34" name="age_group" formControlName="age_group"/>
+          18 - 34
+        </label><br>
+        <label>
+          <input type="radio" value="35-55" name="age_group" formControlName="age_group"/>
+          35 - 55
+        </label><br>
+        <label>
+          <input type="radio" value="55+" name="age_group" formControlName="age_group"/>
+          55+
+        </label>
+      </div>
+      <label>
+        <input type="checkbox" value="true" formControlName="newsletter">
+        Receive newsletter by email
+      </label>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" [disabled]="!userForm.valid"
+      [ngClass]="{'btn': true, 'disabledBtn': !userForm.valid}"
+      (click)="updateUser()">Update User</button>
+  </div>
+</modal>

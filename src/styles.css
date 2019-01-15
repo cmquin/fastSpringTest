@@ -1,1 +1,193 @@
 /* You can add global styles to this file, and also import other style files */
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+body{
+  font-family: Helvetica, Arial, sans-serif;
+  width: 100%;
+  min-width: 1000px;
+  background-color: #f3f3f3;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+input[type="text"],
+input[type="email"]{
+  width: 100%;
+  margin-bottom: 5px;
+  box-sizing : border-box;
+}
+
+.btn {
+  background-color: #1c83c5;
+  color: #fff;
+  padding: 6px 12px;
+  margin: 5px 0 0 0;
+  border-radius: 5px;
+  font-size: 13px;
+  border: 1px solid #1E84C4;
+  border-bottom: 3px solid #13557F;
+  cursor: pointer;
+}
+
+.btn.btn-secondary {
+    color: #878C8F;
+    background-color: #D0D9DD;
+    border: 1px solid #D0D9DD;
+    border-bottom: 3px solid #878C8F;
+}
+
+.disabledBtn {
+  background-color: #dbdbdb;
+  color: #666666;
+  margin: 15px 10px 0 0 !important;
+  border-top: 1px solid #9a9a9a;
+  border-left: 1px solid #9a9a9a;
+  border-right: 1px solid #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
+  -webkit-box-shadow: 0px 2px 0px 0px rgba(120,120,120,1);
+          box-shadow: 0px 2px 0px 0px rgba(120,120,120,1);
+}
+
+.btn.disabledBtn:hover {
+  background-color: #dbdbdb;
+  border-top: 1px solid #9a9a9a;
+}
+
+.red-text, .errors-UL{
+  color: red;
+}
+
+.errors-UL {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.invalid-err-msg {
+  text-align: left;
+}
+
+.form-container{
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.required{
+  text-align: right;
+}
+
+.age-container{
+  border-radius: 4px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+
+.zip-width {
+  width: 20% !important;
+}
+
+input.ng-touched.ng-invalid {
+  border:1px solid red;
+}
+
+
+/* modal styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  z-index: 1000;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+  max-width: 800px;
+  max-height: calc(100% - 40px);
+  background-color: #fff;
+  padding: 12px;
+  -webkit-box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+    0 13px 19px 2px rgba(0, 0, 0, 0.14),
+    0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+    0 13px 19px 2px rgba(0, 0, 0, 0.14),
+    0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column
+}
+
+.modal-title {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+}
+
+.modal-body{
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.modal-body-container{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    overflow: auto;
+}
+
+.modal-footer{
+    margin: 10px 0 0;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    top: 40px;
+    max-height: calc(100% - 80px);
+  }
+}
+
+@media screen and (-ms-high-contrast: none), (-ms-high-contrast: active){
+    .modal-body-container{
+        max-height: 600px;
+    }
+}
+
+.modal__close-btn {
+  border: 0;
+  background: none;
+  color: #2d2d2d;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+}

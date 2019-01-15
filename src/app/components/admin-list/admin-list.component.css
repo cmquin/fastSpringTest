@@ -1,0 +1,12 @@
+.table-container{
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+thead td {
+  font-weight: 700;
+}
+
+td{
+  padding: 5px 10px;
+}
